@@ -52,6 +52,7 @@ int main()
 ```
 
 ## [Repetitions](https://cses.fi/problemset/task/1069)
+Keeping the count of consecutive characters then when the next character is different we compare this count to the maximum.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
