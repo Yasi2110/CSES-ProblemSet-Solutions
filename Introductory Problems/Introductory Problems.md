@@ -1,7 +1,7 @@
 # Introductory Problems
 
 ## [Weird Algorithm](https://cses.fi/problemset/task/1068)
-
+Printing the blanck spaces as a char not a string so the programm can be in the time limit.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
