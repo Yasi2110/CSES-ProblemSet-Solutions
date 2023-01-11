@@ -125,6 +125,7 @@ int main()
 ```
 
 ## [Number Spiral](https://cses.fi/problemset/task/1071)
+First finding in which part(circle) of the spiral we are in - that's the max(x, y). After that we add or subtract from the first number in the row/colum the min(x, y) to get to the number in the cell we want.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -136,8 +137,6 @@ int main()
     while(t-- ) {
         long long x, y, el;
         cin>>y>>x;
-        // first finding in which
-        // part(ring) of the spiral we are
         if(x >= y) {
             if(x%2 == 1) el = x*x - y + 1;
             else  el = (x-1)*(x-1) + y;
