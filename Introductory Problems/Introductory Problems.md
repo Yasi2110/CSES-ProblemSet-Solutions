@@ -76,6 +76,7 @@ int main()
 ```
 
 ## [Increasing Array](https://cses.fi/problemset/task/1094)
+When the previous element is bigger than the current one, we add the difference to the answear and make the current element equal to the previous one.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -103,6 +104,8 @@ int main()
 ```
 
 ## [Permutations](https://cses.fi/problemset/task/1070)
+If n > 4 we first print the numbers from n, n-2, n-4... then print n-1, n-3, n-5...
+Otherwise we can view it as a single case.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
