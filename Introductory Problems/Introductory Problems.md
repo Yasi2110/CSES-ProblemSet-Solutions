@@ -125,7 +125,7 @@ int main()
 ```
 
 ## [Number Spiral](https://cses.fi/problemset/task/1071)
-First finding in which part(circle) of the spiral we are in - that's the max(x, y). After that we add or subtract from the first number in the row/colum the min(x, y) to get to the number in the cell we want.
+First finding in which part(circle) of the spiral we are in - that's the max(x, y). After that we add or subtract from the first number in the row/column the min(x, y) to get to the number in the cell we want.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -154,6 +154,7 @@ int main()
 ```
 
 ## [Two Knights](https://cses.fi/problemset/task/1072)
+We find the answer for the table k x k using the answer for the previous table (k-1) x (k-1) and adding the possibilities where one of the knights or both are in the last row or the last column. After simplification we get to the formula below.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
