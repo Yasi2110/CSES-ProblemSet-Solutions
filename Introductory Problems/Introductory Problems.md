@@ -24,6 +24,7 @@ int main()
 ```
 
 ## [Missing Number](https://cses.fi/problemset/task/1083)
+In a bool array we write down which numbers we have gone through.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
