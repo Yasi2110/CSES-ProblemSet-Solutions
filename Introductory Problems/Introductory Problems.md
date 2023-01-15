@@ -242,7 +242,7 @@ int main()
 ```
 
 ## [Trailing Zeroes](https://cses.fi/problemset/task/1618)
-The number of trailing zeroes in n! is the minimum of the number of twoes that take part in the product and the number of fives. Obviously this min is equal to the number of fives. But we have to notice that in 25 for example there are two fives, that also it's true for 50, 75 etc. So for every number that is devisible by a degree of five we add one more to the ansewear.
+The number of trailing zeroes in n! is the minimum of the number of twoes that take part in the product and the number of fives. Obviously this min is equal to the number of fives. But we have to notice that in 25 for example there are two fives, that is also true for 50, 75 etc. So for every number that is devisible by a degree of five we add one more to the ansewear.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
