@@ -283,3 +283,42 @@ int main()
     return 0;
 }
 ```
+
+## [Palindrome Reorder](https://cses.fi/problemset/task/1755)
+The only way to have no solutions is if more than one letter is contained an odd number of times - if it's only one that letter should be in the middle of the palindrome. For all the other letters that are contained an even number of times - half of them we are putting in the beginning, the other half in the end.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int countt[26];
+
+int main()
+{
+    string s;
+    cin>>s;
+    for(int i=0;i<s.size();i++) {
+        countt[s[i]-'A']++;
+    }
+    int mid = -1, br = 0;
+    for(int i=0;i<26;i++) {
+        if(countt[i]%2 != 0) {
+            br++;  mid = i;
+            countt[mid]--;
+        }
+    }
+    if(br > 1) cout<<"NO SOLUTION"<<endl;
+    else {
+        for(int i=0;i<26;i++) {
+            for(int j=1;j<=countt[i]/2;j++)
+                cout<<(char)(i+'A');
+        }
+        if(mid != -1) cout<<(char)(mid+'A');
+        for(int i=25;i>=0;i--) {
+            for(int j=1;j<=countt[i]/2;j++)
+                cout<<(char)(i+'A');
+        }
+    }
+
+    return 0;
+}
+```
