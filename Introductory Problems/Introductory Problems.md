@@ -180,7 +180,7 @@ int main()
 ```
 
 ## [Two Sets](https://cses.fi/problemset/task/1092/)
-Obviously we cant't divide it into two equal sets if the sum of the numbers n*(n+1)/2 is odd. That is happening when ether n or n+1 is even but it is not divisible by four. In all other cases we are deviding the numbers from 1 to n in groups of four - first group is 1,2,3,4 second one - 5,6,7,8 etc. In every group we get the first and the last number and put it into the first set, the middle two go to the second set. That way the sum in both sets stays the same. When n is odd the first group is only of 1, 2, 3. (1 and 2 - first set, 3 - second)
+Obviously we cant't divide it into two equal sets if the sum of the numbers n*(n+1)/2 is odd. That is happening when ether n or n+1 is even but it is not divisible by four. In all other cases we are deviding the numbers from 1 to n in groups of four - first group is 1,2,3,4 second one - 5,6,7,8 etc. In every group we get the first and the last number and put it into the first set, the middle two go to the second set. That way the sum in both sets stays the same. When n is odd the first group is only of 1, 2, 3. (1 and 2 - first set, 3 - second set)
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
