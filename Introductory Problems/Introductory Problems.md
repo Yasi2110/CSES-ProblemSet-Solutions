@@ -217,3 +217,26 @@ int main()
     return 0;
 }
 ```
+
+## [Bit Strings](https://cses.fi/problemset/task/1617) 
+For every bit we have two options. The answear is 2^n.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+const long long MOD = 1e9 + 7;
+
+int main()
+{
+    int n;
+    cin>>n;
+    long long br = 1;
+    for(int i=1;i<=n;i++) {
+        br*= 2;
+        br%= MOD;
+    }
+    cout<<br<<endl;
+
+    return 0;
+}
+```
