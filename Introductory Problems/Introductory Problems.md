@@ -261,3 +261,25 @@ int main()
     return 0;
 }
 ```
+
+## [Coin Piles](https://cses.fi/problemset/task/1754)
+There are two conditions under which the two piles can be emptied - first is the sum of all coins is divisible by tree (in every move we get a total of tree coins), the second one - neither of the two piles isn't too big, i.e. even if in every move we get two coins from the big one, we still wouldn't empty it before the other pile is already emptied.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t-- ) {
+        int a, b;
+        cin>>a>>b;
+        if(a < b) swap(a, b);
+        if((a+b)%3 != 0 || a > 2*b) cout<<"NO"<<endl;
+        else  cout<<"YES"<<endl;
+    }
+
+    return 0;
+}
+```
