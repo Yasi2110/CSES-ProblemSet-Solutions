@@ -324,7 +324,7 @@ int main()
 ```
 
 ## [Creating Strings](https://cses.fi/problemset/task/1622)
-First we calculate the number of different permutations and we print it - in the array br we count the number of different letters in the string. Afterwards we create each one of them using the recursive function MakePermutation. We can also use the built in fuction in c++ next_permutation.
+First thing we do is to calculate the number of different permutations and print it. Afterwards we create each one of them using the recursive function MakePermutation. We can also use the built in fuction in c++ next_permutation.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
