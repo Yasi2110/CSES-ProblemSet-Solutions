@@ -27,7 +27,7 @@ int main()
 ```
 
 ## [Apartments](https://cses.fi/problemset/task/1084)
-We sort the two arrays and start going through every element of the first one in increasing order. For every element we find the first apartment from the second array that is answearing the conditions for it and matching the current element with this apartment. This will get us the best answear because even if we have several apartments answearing the conditions for the current element we will match it with this apartment that will be with no use forr the upcoming elements.
+We sort the two arrays and start going through every element of the first one in increasing order. For every element we find the first apartment from the second array that is answearing the conditions for it and matching the current element with this apartment. This will get us the best answear because even if we have several apartments answearing the conditions for the current element we will match it with this apartment that will be of no use for the upcoming elements.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
