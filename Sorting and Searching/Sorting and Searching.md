@@ -122,3 +122,45 @@ int main()
     return 0;
 }
 ```
+
+## [Restaurant Customers](https://cses.fi/problemset/task/1619)
+First we put all the times from the input into one vector and sort them. We go through every element and if that element is a time of arrival we add one to the current number of customers into the restaurant, otherwise we substract one from it. The answear is the max of all current numbers of customers we get.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int n;
+struct Element{
+    int val, in;
+};
+vector<Element> a;
+
+bool sortfunc(Element a1, Element a2) {
+    return (a1.val < a2.val) ||
+        (a1.val == a2.val && a1.in > a2.in);
+}
+
+int main()
+{
+    cin>>n;
+    int i;
+    for(i=1;i<=n;i++) {
+        int p, q;
+        cin>>p>>q;
+        a.push_back({p, 1});
+        a.push_back({q, -1});
+    }
+
+    sort(a.begin(), a.end(), sortfunc);
+
+    int br = 0, maxx = 0;
+    for(i=0;i<a.size();i++) {
+        br+= a[i].in;
+        maxx = max(maxx, br);
+    }
+
+    cout<<maxx<<endl;
+
+    return 0;
+}
+```
