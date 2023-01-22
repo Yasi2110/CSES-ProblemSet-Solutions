@@ -166,7 +166,7 @@ int main()
 ```
 
 ## [Sum of Two Values](https://cses.fi/problemset/task/1640)
-We go through every number and check if in the array exists an element equal to x minus the current number. We use set so we could find whether this element exist in an O(1). If this element exist we find the position it is on and print the results.
+We go through every number and check if in the array exists an element equal to x minus the current number. We use set so we could find whether this element exists in an O(1). If this element exists we find the position it is on and print the results.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
