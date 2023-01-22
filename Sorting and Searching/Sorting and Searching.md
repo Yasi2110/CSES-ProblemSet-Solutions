@@ -204,3 +204,26 @@ int main()
     return 0;
 }
 ```
+
+## [Maximum Subarray Sum](https://cses.fi/problemset/task/1643)
+The thing we should notice is that there is no point of having a prefix with negative sum into the subarray. That way we always can just remove that prefix and increase the sum. So we start going through every element and adding it to the current sum, when that sum becomes negative we make it zero. As we said before there is no point of adding the prefix with that negative sum to the answear.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n, a, i;
+    cin>>n;
+    long long br = 0, maxx = -1e9;
+    for(i=1;i<=n;i++) {
+        cin>>a;
+        br+= a;
+        maxx = max(maxx, br);
+        if(br < 0) br = 0;
+    }
+    cout<<maxx<<endl;
+
+    return 0;
+}
+```
