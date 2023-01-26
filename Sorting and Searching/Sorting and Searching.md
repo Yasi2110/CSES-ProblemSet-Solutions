@@ -165,6 +165,42 @@ int main()
 }
 ```
 
+## [Movie Festival](https://cses.fi/problemset/task/1629/)
+We sort the elements in the array by the second number - the end of every movie. We start going through the elemnts and if we can watch the current movie, i.e. it starts after the end of the last one we watched, we watch the current movie.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int n;
+const int MAXN = 2e5+1;
+struct El{
+    int l, r;
+};
+El a[MAXN];
+ 
+bool sortfunc(El a1, El a2) { return a1.r < a2.r; }
+ 
+int main()
+{
+    cin>>n;
+    int i;
+    for(i=1;i<=n;i++)
+        cin>>a[i].l>>a[i].r;
+    sort(a+1, a+n+1, sortfunc);
+ 
+    int endd = 0, br = 0;
+    for(i=1;i<=n;i++) {
+        if(endd <= a[i].l) {
+            endd = a[i].r;
+            br++;
+        }
+    }
+    cout<<br<<endl;
+ 
+    return 0;
+}
+```
+
 ## [Sum of Two Values](https://cses.fi/problemset/task/1640)
 We go through every number and check if in the array exists an element equal to x minus the current number. We use set so we could find whether this element exists in O(1). If this element exists we find the position it is on and print the results.
 ```cpp
