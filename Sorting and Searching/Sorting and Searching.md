@@ -265,7 +265,7 @@ int main()
 ```
 
 ## [Stick Lengths](https://cses.fi/problemset/task/1074)
-The length that we are gonna make all sticks equal to is optimal when it is the median of the set of numbers we are given.   
+The length that we are gonna make all sticks equal to is optimal when it is the median of the set of numbers we are given. A median is the element in the midlle of a sequence when the numbers in it are sorted.  
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
