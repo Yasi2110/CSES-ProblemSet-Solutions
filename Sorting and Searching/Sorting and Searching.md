@@ -293,7 +293,7 @@ int main()
 ```
 
 ## [Collecting Numbers](https://cses.fi/problemset/task/2216)
-
+We collect the numbers in order from 1 to n so we sort the numbers that way but also rememeber the position on which they use to be. We go through these positions and every time the current position is smaller than the previous one we add one to the answear. That is so because every time that happens it means that we should go to the end and start a new round so we can collect the current number.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
