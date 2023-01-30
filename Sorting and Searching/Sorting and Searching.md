@@ -380,7 +380,7 @@ int main()
 ```
 
 ## [Playlist](https://cses.fi/problemset/task/1141)
-
+We keep the songs that are in the current subsequence in a set and also the position that this subsequence starts at. We go through every songs and we add it to the set. If that song already exists in the set, we remove elements from the start of the subsequence while we are able to add the current song to it, i.e. when we add the song the subsequence stays unique. The answear is the max of all unique subsequences we have found.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
