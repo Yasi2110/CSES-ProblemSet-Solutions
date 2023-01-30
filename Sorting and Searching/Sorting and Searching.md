@@ -409,3 +409,28 @@ int main()
     return 0;
 }
 ```
+
+## [Towers](https://cses.fi/problemset/task/1073)
+We go through every cube and put it on the first tower we can, i.e. the tower with smallest last cube that is bigger than the current one. If that is not possible we built new tower using the current cube.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+ 
+multiset<int> s;
+multiset<int>::iterator it;
+ 
+int main()
+{
+    int n, p;
+    cin>>n;
+    for(int i=1;i<=n;i++) {
+        cin>>p;
+        it = s.upper_bound(p);
+        if(it != s.end()) s.erase(it);
+        s.insert(p);
+    }
+    cout<<s.size()<<endl;
+ 
+    return  0;
+}
+```
