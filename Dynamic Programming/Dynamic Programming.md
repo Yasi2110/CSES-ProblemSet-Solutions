@@ -58,3 +58,33 @@ int main()
     return 0;
 }
 ```
+
+## [Coin Combinations 1](https://cses.fi/problemset/task/1635)
+We use a similar idea to the previous task. But this time we want to calculate the number of possible combinations not the minimal number of coins. This time the answear for a sum x is the sum of all the answears for x minus any of the given coins.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int n, x;
+const int MAXX = 1e6+1;
+const long long MOD = 1e9+7;
+long long dp[MAXX];
+int a[101];
+ 
+int main()
+{
+    int i, j;
+    cin>>n>>x;
+    for(i=1;i<=n;i++) cin>>a[i];
+ 
+    dp[0] = 1;
+    for(i=1;i<=x;i++) {
+        for(j=1;j<=n;j++)
+            if(i >= a[j]) dp[i]+= dp[i-a[j]];
+        dp[i]%= MOD;
+    }
+    cout<<dp[x]<<endl;
+ 
+    return 0;
+}
+```
