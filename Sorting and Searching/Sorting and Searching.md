@@ -502,7 +502,7 @@ int main()
 ```
 
 ## [Josephus Problem 2]()
-We use the same idea as in the previous task. The only difference is that we now go through and print every k-th number.
+We use the same idea as in the previous task. The only difference is that we now go through and print every k+1-th number.
 ```cpp
 
 ```
