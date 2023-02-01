@@ -469,3 +469,34 @@ int main()
     return 0;
 }
 ```
+
+## [Josephus Problem 1](https://cses.fi/problemset/task/2162)
+To simulate the process discribed in the task we use two vectors. In the first one are the numbers of the children that have left. We go through the elements of this vector, print every second one of them and keep in the other vector the numbers that we have not print - these are the numbers that have left for the next tour. After we have done that we make the first vector equal to the second one, i.e. the numbers left after the last tour. We do all of this because just erasing from a vector or array is too slow.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int n;
+vector<int> v, v2;
+ 
+int main()
+{
+    int i, start = 1;
+    cin>>n;
+    for(i=1;i<=n;i++) v.push_back(i);
+ 
+    while(v.size() != 1) {
+        for(i=1;i<v.size();i+=2) {
+            cout<<v[i]<<" ";
+            v2.push_back(v[i-1]);
+        }
+        if(v.size()%2 == 1)
+            v2.insert(v2.begin(), v[v.size()-1]);
+        v = v2;
+        v2.clear();
+    }
+    cout<<v[0]<<endl;
+ 
+    return 0;
+}
+```
