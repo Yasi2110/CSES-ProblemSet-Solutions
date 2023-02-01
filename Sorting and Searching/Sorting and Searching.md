@@ -481,7 +481,7 @@ vector<int> v, v2;
  
 int main()
 {
-    int i, start = 1;
+    int i;
     cin>>n;
     for(i=1;i<=n;i++) v.push_back(i);
  
@@ -499,4 +499,10 @@ int main()
  
     return 0;
 }
+```
+
+## [Josephus Problem 2]()
+We use the same idea as in the previous task. The only difference is that we now go through and print every k-th number.
+```cpp
+
 ```
