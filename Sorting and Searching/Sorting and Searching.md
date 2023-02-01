@@ -436,7 +436,7 @@ int main()
 ```
 
 ## [Traffic Lights](https://cses.fi/problemset/task/1163)
-We use two sets - one to keep the current distances between every two consecutive traffic lights and one two keep the positions of the traffic lights. We simulate the process using these two sets. After every new traffic light the answear is the last element from the second set(the largest element).
+We use two sets - one to keep the current distances between every two consecutive traffic lights and one two keep the positions of the traffic lights. We simulate the process using these two sets. After every new traffic light the answear is the last element from the first set(the largest element).
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
