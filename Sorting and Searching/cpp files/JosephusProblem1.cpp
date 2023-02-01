@@ -6,7 +6,7 @@ vector<int> v, v2;
 
 int main()
 {
-    int i, start = 1;
+    int i;
     cin>>n;
     for(i=1;i<=n;i++) v.push_back(i);
 
