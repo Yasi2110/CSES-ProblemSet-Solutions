@@ -502,7 +502,34 @@ int main()
 ```
 
 ## [Josephus Problem 2]()
-We use the same idea as in the previous task. The only difference is that we now go through and print every k+1-th number.
+The idea we use in the previous task would be too slow for some bigger ks. So we use a tree structure to simulate the process discribed in the task.
 ```cpp
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
+using namespace std;
 
+typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> index_set;
+index_set v;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);  cout.tie(NULL);
+    int n, k, i;
+    cin>>n>>k;
+    for(i=1;i<=n;i++)
+        v.insert(i);
+
+    int tek = k;
+    while(v.size() > 0) {
+        tek%= v.size();
+        auto ans = v.find_by_order(tek);
+        cout<<*ans<<' ';
+        v.erase(ans);
+        tek+= k;
+    }
+
+    return 0;
+}
 ```
