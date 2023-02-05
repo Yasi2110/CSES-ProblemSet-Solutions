@@ -535,7 +535,7 @@ int main()
 ```
 
 ## [Nested Ranges Check](https://cses.fi/problemset/task/2168)
-First we sort the ranges increasingly by their left sides. To find whether some other range contains the current one, we find the max right end from all ranges before the current one. We already know that the left end of the current interval is bigger than all left ends of the privious ones. So if the max is bigger than the right end of the current interval, there is a range that contains it. We use the same strategy to find if the currend interval contains other range, but this time we go through the ranges in reverse order.
+First we sort the ranges increasingly by their left sides. To find whether some other range contains the current one, we find the max right end from all ranges before the current one. We already know that the left end of the current interval is bigger than all left ends of the privious ones. So if the max is bigger than the right end of the current interval, there is a range that contains it. We use the same strategy to find if the current interval contains other range, but this time we go through the ranges in reverse order.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
