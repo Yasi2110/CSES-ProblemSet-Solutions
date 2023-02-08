@@ -254,3 +254,6 @@ int main()
     return 0;
 }
 ```
+
+## [Removal Game]()
+In dp[i][j] we keep the max score you can do as a firts player in the interval from i to j in the array.
