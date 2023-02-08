@@ -255,8 +255,8 @@ int main()
 }
 ```
 
-## [Removal Game]()
-In dp[i][j] we keep the max score you can do as a firts player in the interval from i to j in the array.
+## [Removal Game](https://cses.fi/problemset/task/1097)
+In dp[i][j] we keep the max score you can do as a first player in the interval from i to j in the array. To find dp[i][j] we find the max from the case when the first player gets the first number(i+1) and the case they get the last number(j-1).
 
 ```cpp
 #include <bits/stdc++.h>
