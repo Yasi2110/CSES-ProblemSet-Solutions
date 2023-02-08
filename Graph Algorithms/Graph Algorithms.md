@@ -306,31 +306,32 @@ int main()
 }
 ```
 
+## [Round Trip](https://cses.fi/problemset/task/1669)
+To find a round path we start from some vertex and go through the graph using dfs. When we arrive at vertex we already been in we have find a round path. To recreate that path we keep for every vertex the previous one in the dfs.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
-
+ 
 int n, m;
 const int MAXN = 1e5+1;
 vector<int> v[MAXN];
 bool fl[MAXN];
 int pr[MAXN], start = -1;
-
-void Dfs(int k, int from) {
-    if(start != -1) return;
+ 
+void Dfs(int k) {
+    if(fl[k]) {
+        start = k;
+        return;
+    }
     fl[k] = 1;
     for(int i=0;i<v[k].size();i++) {
-        if(v[k][i] == from) continue;
-        if(fl[v[k][i]]) {
-            pr[v[k][i]] = k;
-            start = v[k][i];
-            return;
-        }
+        if(pr[k] == v[k][i]) continue;
         pr[v[k][i]] = k;
-        Dfs(v[k][i], k);
+        Dfs(v[k][i]);
+        if(start != -1) return;
     }
 }
-
+ 
 int main()
 {
     int i;
@@ -341,10 +342,10 @@ int main()
         v[p].push_back(q);
         v[q].push_back(p);
     }
-
+ 
     for(i=1;i<=n;i++) {
         if(fl[i] == 0) {
-            Dfs(i, -1);
+            Dfs(i);
             if(start != -1) break;
         }
     }
@@ -362,8 +363,7 @@ int main()
         for(i=0;i<path.size();i++)
             cout<<path[i]<<" ";
     }
-
+ 
     return 0;
 }
-
 ```
