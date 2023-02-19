@@ -1,7 +1,7 @@
 # Dynamic Programming
 
 ## [Dice Combinations](https://cses.fi/problemset/task/1633)
-The answear for some sum n is the sum of the answears for n-1, n-2, n-3, n-4, n-5 and n-6. That is so because on every move we can add a dice with sum from 1 to 6.
+The answer for some sum n is the sum of the answers for n-1, n-2, n-3, n-4, n-5 and n-6. That is so because on every move we can add a dice with sum from 1 to 6.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,7 +32,7 @@ int main()
 ```
 
 ## [Minimizing Coins](https://cses.fi/problemset/task/1634)
-For every sum x the answear is the minimum of one(the current coin that we add) plus the answear for x minus the current coin.
+For every sum x the answer is the minimum of one(the current coin that we add) plus the answer for x minus the current coin.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -60,7 +60,7 @@ int main()
 ```
 
 ## [Coin Combinations 1](https://cses.fi/problemset/task/1635)
-We use a similar idea to the previous task. But this time we want to calculate the number of possible combinations not the minimal number of coins. This time the answear for a sum x is the sum of all the answears for x minus any of the given coins.
+We use a similar idea to the previous task. But this time we want to calculate the number of possible combinations not the minimal number of coins. This time the answer for a sum x is the sum of all the answers for x minus any of the given coins.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -90,7 +90,7 @@ int main()
 ```
 
 ## [Removing Digits](https://cses.fi/problemset/task/1637)
-For every n the answear is one plus the minimum from all the answears of n minus any given digit of n.
+For every n the answer is one plus the minimum from all the answers of n minus any given digit of n.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -150,7 +150,7 @@ int main()
 ```
 
 ## [Array Discription](https://cses.fi/problemset/task/1746)
-In dp[i][j] we keep the number of arrays that match the discription to the i-th elemnt and the i-th element is equal to j. We calculate the dp taking into account the numbers that we already know in the input array. The answear is the sum of all dp[n][i] where i is between 1 and m.
+In dp[i][j] we keep the number of arrays that match the discription to the i-th elemnt and the i-th element is equal to j. We calculate the dp taking into account the numbers that we already know in the input array. The answer is the sum of all dp[n][i] where i is between 1 and m.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -189,7 +189,7 @@ int main()
 ```
 
 ## [Rectangle Cutting](https://cses.fi/problemset/task/1744)
-To find the answear for some rectangle a x b we try all options for squares that we can cut and the answear if we cut that square. The answear for the rectangle is the minimum answear we've got from all the squares.
+To find the answer for some rectangle a x b we try all options for squares that we can cut and the answer if we cut that square. The answer for the rectangle is the minimum answer we've got from all the squares.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -288,7 +288,7 @@ int main()
 ```
 
 ## [Two Sets](https://cses.fi/problemset/task/1093)
-In dp[i][j] we keep the number of all pair sets including the numbers from 1 to i with the difference between the sums of their elements j. The answear will be dp[n][0].
+In dp[i][j] we keep the number of all pair sets including the numbers from 1 to i with the difference between the sums of their elements j. The answer will be dp[n][0].
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -312,6 +312,63 @@ int main()
     }
     if(dp[n][0]%2 != 0) dp[n][0]+= MOD;
     cout<<(dp[n][0]/2)%MOD<<endl;
+ 
+    return 0;
+}
+```
+
+## [Increasing Subsequence](https://cses.fi/problemset/task/1145)
+To find the answer for the elements from the first to the i-th element in the array we find the maximum answer from all the elements before the i-th whith value smaller than a[i] and add one(the current element). To do this we use fenwick tree. Because the numbers in the array are too big and we cannot make an array with 10^9 elements we revalue all the elements in the array but keep their order, i.e. when an element is bigger than another one it stays bigger.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int n;
+const int MAXN = 2e5+1;
+int a[MAXN];
+set<int> st;
+set<int>::iterator it;
+map<int, int> newval;
+int fen[MAXN];
+ 
+int rsq(int k) {
+    int res = 0;
+    while(k > 0) {
+        res = max(res, fen[k]);
+        k = (k&(k+1))-1;
+    }
+    return res;
+}
+ 
+void update(int k, int newmax) {
+    while(k < MAXN) {
+        fen[k] = max(fen[k], newmax);
+        k = k|(k+1);
+    }
+}
+ 
+int main()
+{
+    int i;
+    cin>>n;
+    for(i=1;i<=n;i++) {
+        cin>>a[i];
+        st.insert(a[i]);
+    }
+ 
+    int tek = 0;
+    for(it=st.begin();it!=st.end();++it)
+        newval[*it] = ++tek;
+ 
+    for(i=1;i<=n;i++) a[i] = newval[a[i]];
+ 
+    int Max = 0;
+    for(i=1;i<=n;i++) {
+        int tans = rsq(a[i]-1) + 1;
+        update(a[i], tans);
+        Max = max(Max, tans);
+    }
+    cout<<Max<<endl;
  
     return 0;
 }
