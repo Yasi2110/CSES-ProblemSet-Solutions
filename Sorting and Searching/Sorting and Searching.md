@@ -663,3 +663,53 @@ int main()
     return 0;
 }
 ```
+
+## [Room Allocation](https://cses.fi/problemset/task/1164)
+First we sort all the intervals by there left side than we start putting the people in rooms as we put a person in a new room only if there is no other one that we already used and now its empty. To do this we use a priority queue in which we store all the right sides of the intervals that currently are in a room(or just left it and no one replaced them). We add a new room only when the first element in the queue is larger than the left side of the current element(the first person to leave, leaves after the current person arrives). Because the priority queue sorts the elements in decreasing order(and we need to be in increasing order) we put all the elements in the queue with negative sign.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int n;
+const int MAXN = 2e5+1;
+struct Client{
+    int l, r, nom, br;
+};
+Client a[MAXN];
+ 
+bool sortfunc(Client a1, Client a2) { return a1.l < a2.l; }
+bool sortfunc2(Client a1, Client a2) { return a1.nom < a2.nom; }
+ 
+int main()
+{
+    int i;
+    cin>>n;
+    for(i=1;i<=n;i++) {
+        cin>>a[i].l>>a[i].r;
+        a[i].nom = i;
+    }
+    sort(a+1, a+n+1, sortfunc);
+ 
+    priority_queue<pair<int, int>> q;
+    int br = 0;
+    for(i=1;i<=n;i++) {
+        if(q.empty() || -q.top().first >= a[i].l) {
+            a[i].br = ++br;
+            q.push({-a[i].r, a[i].br});
+        }
+        else {
+            a[i].br = q.top().second;
+            q.pop();
+            q.push({-a[i].r, a[i].br});
+        }
+    }
+ 
+    sort(a+1, a+n+1, sortfunc2);
+ 
+    cout<<br<<endl;
+    for(i=1;i<=n;i++) cout<<a[i].br<<" ";
+    cout<<endl;
+ 
+    return 0;
+}
+```
