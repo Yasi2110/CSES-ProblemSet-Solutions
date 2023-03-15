@@ -396,6 +396,41 @@ int main()
 }
 ```
 
+## [Digit Queries](https://cses.fi/problemset/task/2431)
+To find what is the digit on the k-th position, first we find how many digits has the number A that contains this k-th digit(we keep this in dig). After that we start finding the digits of A one by one and storing them in the array called ans. 
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main()
+{
+    int t;
+    cin>>t;
+    while(t-- ){
+        long long k;
+        cin>>k;
+        long long help = 9, dig = 1;
+        int ans[19], pos = 1;
+        while(k > help*dig) {
+            k-= help*dig;
+            help*=10, dig++;
+        }
+        help/= 9;
+        while(help > 0) {
+            if(pos == 1) ans[pos] = 1;
+            else  ans[pos] = 0;
+            while(k > help*dig) {
+                k-= help*dig;
+                ans[pos] ++;
+            }
+            help/= 10; pos++;
+        }
+        cout<<ans[k]<<endl;
+    }
+    return 0;
+}
+```
+
 ## [Grid Paths](https://cses.fi/problemset/task/1625)
 To count the number of paths we use a recursive function. In the place of ? we can have L, R, D or U so we try all of the options and count how many of the paths we made are valid and end in the lower-left square. To make it fast enough we check when the current path had made a circle(i.e. after that it can't make a valid path) and stop considering it. 
 ```cpp
