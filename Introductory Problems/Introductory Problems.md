@@ -396,6 +396,59 @@ int main()
 }
 ```
 
+## [Chessboard and Queens](https://cses.fi/problemset/task/1624)
+We use the recursive function Rec to find all the solutions. In every column we must place exactly one queen(we can't place more without them attacking each other). So for every possible position in the current column, we try to place the queen that should be in that column there(if that is possible according to the queens placed in the previous columns). We do this for all 8 columns.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+ 
+char a[9][9];
+int Ans = 0;
+ 
+bool CheckPos(int x, int y) {
+    if(a[x][y] != '.') return false;
+    for(int i=1;i<=8;i++)
+        if(a[x][i] == '#') return false;
+    for(int i=1;i<=8;i++)
+        if(a[i][y] == '#') return false;
+    for(int i=1;x-i>0&&y-i>0;i++)
+        if(a[x-i][y-i] == '#') return false;
+    for(int i=1;x+i<=8&&y+i<=8;i++)
+        if(a[x+i][y+i] == '#') return false;
+    for(int i=1;x-i>0&&y+i<=8;i++)
+        if(a[x-i][y+i] == '#') return false;
+    for(int i=1;x+i<=8&&y-i>0;i++)
+        if(a[x+i][y-i] == '#') return false;
+    return true;
+}
+ 
+void Rec(int col) {
+    if(col == 9) {
+        Ans++;
+        return;
+    }
+    for(int i=1;i<=8;i++) {
+        if(CheckPos(i, col)) {
+            a[i][col] = '#';
+            Rec(col+1);
+            a[i][col] = '.';
+        }
+    }
+}
+ 
+int main()
+{
+    for(int i=1;i<=8;i++)
+        for(int j=1;j<=8;j++)
+            cin>>a[i][j];
+ 
+    Rec(1);
+    cout<<Ans<<endl;
+ 
+    return 0;
+}
+```
+
 ## [Digit Queries](https://cses.fi/problemset/task/2431)
 To find what is the digit on the k-th position, first we find how many digits has the number A that contains this k-th digit(we keep this in dig). After that we start finding the digits of A one by one and storing them in the array called ans. 
 ```cpp
