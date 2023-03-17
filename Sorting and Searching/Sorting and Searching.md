@@ -714,7 +714,7 @@ int main()
 }
 ```
 
-## [Factory Machines]()
+## [Factory Machines](https://cses.fi/problemset/task/1620)
 To solve the problem we use binary search on the answer. In the function Solve we check whether for a sertain amount of time k, we can do t or more products. If that is possible we try for a smaller k, otherwise for a larger. 
 ```cpp
 #include <bits/stdc++.h>
