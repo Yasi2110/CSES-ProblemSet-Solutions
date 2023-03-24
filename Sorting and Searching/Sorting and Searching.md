@@ -804,3 +804,33 @@ int main()
     return 0;
 }
 ```
+
+## [Nearest Smaller Values](https://cses.fi/problemset/task/1645)
+We go through the elements in reversed order and start adding them in a stack. When we have to add the i-th element, we first check whether the top of the stack is a bigger number. If that's true than the answer for the number that is on top of the stack is the i-th position. After we already find the answer for it, we erase the top element from the stack. We do this while it's possible.
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+ 
+const int MAXN = 2e5+1;
+int a[MAXN];
+int ans[MAXN];
+ 
+int main()
+{
+    int n, i;
+    cin>>n;
+    for(i=1;i<=n;i++) cin>>a[i];
+    stack<int> st, pos;
+    for(i=n;i>=1;i--) {
+        while(!st.empty() && a[i] < st.top()) {
+            ans[pos.top()] = i;
+            st.pop(); pos.pop();
+        }
+        st.push(a[i]); pos.push(i);
+    }
+ 
+    for(i=1;i<=n;i++) cout<<ans[i]<<" ";
+ 
+    return 0;
+}
+```
