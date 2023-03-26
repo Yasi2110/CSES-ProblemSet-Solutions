@@ -836,7 +836,7 @@ int main()
 ```
 
 ## [Subarrays Sums 1](https://cses.fi/problemset/task/1660)
-
+In the array sum we keep the sum of all elements from 1 to i. Then we go through every position and find whether there is a subarray starting from this position with sum x. To do this in O(1) we use set.
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
