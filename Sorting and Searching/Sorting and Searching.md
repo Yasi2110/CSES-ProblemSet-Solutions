@@ -902,7 +902,7 @@ int main()
 ```
 
 ## [Subarray Distinct Values](https://cses.fi/problemset/task/2428)
-For every r(right end of a subarray) in the interval from 1 to n, we find that l(left end) where the subarray (l, r) has at most k distinc values and it is with max size. That means all subarrays (l,r) (l+1,r)...(r,r) are also answers and we add them to ans. To find every (l,r) in linear time we use br where we keep the number of distict values in the current subarray. When br becomes more than k we increase l while br is again at most k. To do so we use the map m where we keep how many times we have a given integer in the current interval (l, r).
+For every r(right end of a subarray) in the interval from 1 to n, we find that l(left end) where the subarray (l, r) has at most k distinct values and it is with max size. That means all subarrays (l,r) (l+1,r)...(r,r) are also answers and we add them to ans. To find every (l,r) in linear time we use br where we keep the number of distict values in the current subarray. When br becomes more than k we increase l while br is again at most k. To do so we use the map m where we keep how many times we have a given integer in the current interval (l, r).
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
