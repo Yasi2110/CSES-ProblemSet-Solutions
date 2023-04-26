@@ -865,3 +865,38 @@ int main()
     return 0;
 }
 ```
+
+## [Subarray Divisibility](https://cses.fi/problemset/task/1662)
+To solve the problem we use an array tsum with all prefix sums(moduled by n). To do the counting we go through every element and find the number of subarrays starting at that position. To do this fast enough we use the array m where we keep the number of all tsum elements that we already been through and can be the right end of a subarray. 
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int n;
+const int MAXN = 2e5+1;
+int a[MAXN], tsum[MAXN];
+long long m[MAXN];
+ 
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    int i;
+    cin>>n;
+    for(i=1;i<=n;i++) {
+        cin>>a[i];
+        tsum[i] = tsum[i-1] + a[i];
+        tsum[i]%= n;
+        if(tsum[i] < 0) tsum[i]+= n;
+    }
+ 
+    long long br = 0;
+    for(i=n;i>=1;i--) {
+        m[tsum[i]]++;
+        br+= m[tsum[i-1]];
+    }
+    cout<<br<<endl;
+ 
+    return 0;
+}
+```
