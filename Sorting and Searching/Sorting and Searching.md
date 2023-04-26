@@ -867,7 +867,7 @@ int main()
 ```
 
 ## [Subarray Divisibility](https://cses.fi/problemset/task/1662)
-To solve the problem we use an array tsum with all prefix sums(moduled by n). To do the counting we go through every element and find the number of subarrays starting at that position. To do this fast enough we use the array m where we keep the number of all tsum elements that we already been through and can be the right end of a subarray. 
+To solve the problem we use an array tsum with all prefix sums(moduled by n). In that wat the only condition for some subarray (l, r) to be divisible by n is tsum[l-1] = tsum[r]. To do the counting we go through every element and find the number of subarrays starting at that position. To do this fast enough we use the array m where we keep the number of all tsum elements that we already been through and can be the right end of a subarray. 
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -900,3 +900,40 @@ int main()
     return 0;
 }
 ```
+
+## [Subarray Distinct Values](https://cses.fi/problemset/task/2428)
+For every r(right end of subarray) in the interval from 1 to n, we find that l(left end) where the subarray (l, r) has at most k distinc values and it is with max size. That means all subarrays (l,r) (l+1,r)...(r,r) are also answers and we add them to ans. To find every (l,r) in linear time we use br where we keep the number of distict values in the current subarray. When br becomes more than k we increase l while br is again at most k. To do so we use the map m where we keep how many times we have a given integer in the current interval (l, r).
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int n, k;
+const int MAXN = 2e5+1;
+int a[MAXN];
+map<int, int> m;
+ 
+int main()
+{
+    int i;
+    cin>>n>>k;
+    for(i=1;i<=n;i++) cin>>a[i];
+ 
+    int l = 1, br = 0;
+    long long ans = 0;
+    for(int r=1;r<=n;r++) {
+        m[a[r]]++;
+        if(m[a[r]] == 1) br++;
+        while(br > k) {
+            m[a[l]]--;
+            if(m[a[l]] == 0) br--;
+            l++;
+        }
+        ans+= r-l+1;
+    }
+    cout<<ans<<endl;
+ 
+    return 0;
+}
+```
+
+
